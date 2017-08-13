@@ -1,85 +1,41 @@
-const phantom = require('phantom');
-const pify = require('pify');
+var casper = require('casper').create({
+	waitTimeout: 20000
+});
+var count = 0;
+var windowHeight = 0;
+var step = 900;
+var timer = null;
 
-let sitpage = null;
-let phInstance = null;
-let windowH = 0;
-let arr = [{
-	"dom": "#lj_car",
-	"urlkeyword": "LJcore;public/LJselector;public/LJajax"
-}, {
-	"dom": "#t02",
-	"urlkeyword": "getFmtVideoNew"
-}];
+casper.start('http://bj.leju.com').viewport(1400, step).then(function() {
+	windowHeight = this.getElementBounds('body').height;
+	count = Math.ceil(windowHeight / step);
+});
 
-let scrollPage = function(page, dom, keyword) {
-	console.log(dom, keyword)
-	return page.evaluate(function(ele) {
-		return document.querySelector(ele).offsetTop;
-	}, dom).then(function(top) {
-		console.log(top)
-		let script1 = "function(){ window.scrollTo(0, 500); }";
-		return page.evaluateJavaScript(script1);
+casper.then(function() {
+	// console.log(count, step);
+	var self = this;
+	goNext(count, step, self.scrollTo, function() {
+		self.capture("./leju2.png");
+		self.exit();
 	});
-};
+});
 
-phantom.create()
-	.then(instance => {
-		phInstance = instance;
-		return phInstance.createPage();
-	})
-	.then(page => {
-		sitpage = page;
-		return page.open('http://bj.leju.com');
-	})
-	.then(status => {
-		console.log('status ' + status);
-		sitpage.on('onConsoleMessage', function(msg, lineNum, sourceId) {
-			console.log('CONSOLE: ' + msg + ' (from line #' + lineNum + ' in "' + sourceId + '")');
-		});
-		return sitpage.evaluate(function() {
-			return document.getElementsByTagName('html')[0].getBoundingClientRect().height;
-		});
-	})
-	.then(height => {
-		console.log('page height: ' + height);
-		windowH = height;
-		sitpage.close();
-		return phInstance.createPage();
-	})
-	.then(page => {
-		sitpage = page;
-		sitpage.on('onResourceRequested', function(requestData) {
-			let match = requestData.url.match(/(getFmtVideoNew)/g);
-			if (match) {
-				console.log('Request (#' + requestData.url + ')');
-				setTimeout(function() {
-					page.render('./output/4 ' + arr.length + '.jpg');
-					arr.splice(0, 1);
-					if (!arr.length) {
-						phInstance.exit();
-					}
-				}, 2000);
-			}
-		});
-		return sitpage.property('viewportSize', {
-			width: 1200,
-			height: windowH
-		});
-	})
-	.then(_ => {
-		return sitpage.open('http://bj.leju.com');
-	})
-	.then(status => {
-		console.log('status: ' + status);
-		Promise.all(arr.forEach(function(item) {
-			scrollPage(sitpage, item.dom, item.urlkeyword);
-		}));
-	})
-	.then(k => {
-		console.log(k)
-	})
-	.catch(error => {
-		console.log(error);
-		phInstance.exit();
-	});
+casper.waitForResource(/end-png/g, function() {
+	this.echo('end');
+});
+
+casper.run();
+
+function goNext(num, step, cb, complete) {
+	var n = 0;
+	timer = setInterval(function() {
+		n++;
+		cb.call(casper, 0, n * step);
+		console.log('scrolling');
+		if (n >= num) {
+			clearInterval(timer);
+			console.log('complete');
+			complete();
+		}
+	}, 500);
+}
