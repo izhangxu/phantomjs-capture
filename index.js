@@ -1,22 +1,27 @@
 var casper = require('casper').create({
-	waitTimeout: 20000
+	waitTimeout: 30000
 });
+var captureConfig = require('./config.json').capture;
 var count = 0;
 var windowHeight = 0;
 var step = 900;
 var timer = null;
 
-casper.start('http://bj.leju.com').viewport(1400, step).then(function() {
-	windowHeight = this.getElementBounds('body').height;
-	count = Math.ceil(windowHeight / step);
-});
+casper.start(captureConfig.url)
+	.viewport(captureConfig.viewportWidth, step)
+	.then(function() {
+		windowHeight = this.getElementBounds('body').height;
+		count = Math.ceil(windowHeight / step);
+	});
 
 casper.then(function() {
 	// console.log(count, step);
 	var self = this;
 	goNext(count, step, self.scrollTo, function() {
-		self.capture("./leju2.png");
-		self.exit();
+		setTimeout(function(){
+			self.capture(captureConfig.output);	
+			self.exit();
+		}, 2000);
 	});
 });
 
@@ -37,5 +42,5 @@ function goNext(num, step, cb, complete) {
 			console.log('complete');
 			complete();
 		}
-	}, 500);
+	}, 800);
 }
