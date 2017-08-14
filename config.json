@@ -5,3 +5,32 @@
 		"viewportWidth": 1400
 	}
 }
+
+
+// $url_arr = array(
+// 	0 => 'http://shanxi.esf.leju.com/community/o/?zt_ad_preview=ESFPC-011|119753,ESFPC-012|119752,ESFPC-013|119751',
+// 	1 => 'http://bj.esf.leju.com/info/368/?zt_ad_preview=ESFPC-017|119747,ESFPC-018|119746,ESFPC-019|119745,ESFPC-020|119744,ESFPC-021|119743,ESFPC-022|119742',
+// 	2 => 'http://shanxi.esf.leju.com/house/o实地[表情]zt_ad_preview=ESFPC-014|119750,ESFPC-015|119749,ESFPC-016|119748',
+// 	3 => 'http://bj.esf.leju.com/detail/229600958/?zt_ad_preview=ESFPC-023|119741,ESFPC-024|119740,ESFPC-025|119739,ESFPC-026|119738,ESFPC-027|119737',
+// 	4 => 'http://shanxi.esf.leju.com/house/o/?zt_ad_preview=ESFPC-028|119736,ESFPC-029|119735,ESFPC-030|119734',
+// 	5 => 'http://shanxi.esf.leju.com/?zt_ad_preview=ESFPC-001|119763,ESFPC-002|119762,ESFPC-003|119761,ESFPC-004|119760,ESFPC-005|119759,ESFPC-006|119758,ESFPC-007|119757,ESFPC-008|119756,ESFPC-009|119755,ESFPC-010|119754,ESFPC-031|119726,ESFPC-032|119725,ESFPC-033|119724,ESFPC-034|119723,ESFPC-035|119722,ESFPC-036|119721,ESFPC-037|119720,ESFPC-038|119719',
+// 	6 => 'http://map.leju.com/ty/?zt_ad_preview=XFPC-012|119789',
+// 	7 => 'http://ty.leju.com/?zt_ad_preview=XFPC-021|119780,XFPC-022|119779,XFPC-023|119778,XFPC-024|119777',
+// 	8 => 'http://house.leju.com/bj115178?zt_ad_preview=XFPC-013|119788,XFPC-014|119787,XFPC-015|119786,XFPC-016|119785,XFPC-017|119784',
+// 	9 => 'http://shanxi.leju.com/news/?zt_ad_preview=XFPC-001|119795',
+// 	10 => 'http://shanxi.leju.com/news/dichan?zt_ad_preview=XFPC-002|119794',
+// 	11 => 'http://bj.leju.com/news/2017-02-16/16086237905386209587340.shtml?zt_ad_preview=XFPC-003|119793',
+// 	12 => 'http://house.leju.com/bj115178/pk/53939?zt_ad_preview=XFPC-018|119783,XFPC-019|119782,XFPC-020|119781',
+// 	13 => 'http://house.leju.com/ty/search/?zt_ad_preview=XFPC-005|119792,XFPC-006|119791,XFPC-007|119790,XFPC-031|119713,XFPC-032|119712',
+// 	14 => 'http://house.leju.com/bj115178/xinxi/?zt_ad_preview=XFPC-026|119718,XFPC-027|119717,XFPC-028|119716,XFPC-029|119715,XFPC-030|140063',
+// 	15 => 'http://m.leju.com/touch/esf/shanxi/community/?zt_ad_preview=ESFCP-001|119776,ESFCP-002|119775,ESFCP-003|119774,ESFCP-004|119773,ESFCP-005|119772,ESFCP-006|119771,ESFCP-007|119770',
+// 	16 => 'http://m.leju.com/touch/esf/bj/info/368?zt_ad_preview=ESFCP-009|119769,ESFCP-010|119768,ESFCP-011|119767',
+// 	17 => 'http://m.leju.com/touch/esf/shanxi/house/?zt_ad_preview=ESFCP-015|119733,ESFCP-016|119732,ESFCP-017|119731,ESFCP-018|119730,ESFCP-019|119729,ESFCP-020|119728,ESFCP-021|119727',
+// 	18 => 'http://m.leju.com/touch/esf/bj/detail/241480620/?zt_ad_preview=ESFCP-012|119766,ESFCP-013|119765,ESFCP-014|119764',
+// 	19 => 'http://m.leju.com/index_ty.html?zt_ad_preview=XFCP-018|119797,XFCP-019|119796',
+// 	20 => 'http://m.leju.com/index_ty.html?zt_ad_preview=XFCP-001|119813,XFCP-002|119812',
+// 	21 => 'http://m.leju.com/news-gz-6235638821351113115.html#ln=toutiao_list?zt_ad_preview=XFCP-017|138970',
+// 	22 => 'http://m.leju.com/house/ty/s/#ln=index_dh?zt_ad_preview=XFCP-003|119811,XFCP-004|119810,XFCP-005|119809,XFCP-006|119808,XFCP-007|119807,XFCP-008|119806,XFCP-009|119805,XFCP-010|119804,XFCP-011|119803,XFCP-012|119802,XFCP-013|119801',
+// 	23 => 'http://ad.leju.com/index/preview/preview_app?ad_page=house_info&zt_ad_preview=XFAPP-014|119817,XFAPP-015|119816,XFAPP-016|119815,XFAPP-017|119814,XFCP-014|119800,XFCP-015|119799,XFCP-016|119798',
+
+// );
