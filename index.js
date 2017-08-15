@@ -1,5 +1,5 @@
 var casper = require('casper').create({
-	waitTimeout: 40000
+	waitTimeout: 20000
 });
 
 var captureConfig = require('./config.json').capture;
@@ -26,10 +26,8 @@ casper.start(captureConfig.url)
 casper.then(function() {
 	var self = this;
 	goNext(count, step, self.scrollTo, function() {
-		self.echo('zt: ' + self.evaluate(function() {
-			return document.querySelectorAll('[data-ad-tag]').length;
-		}));
-		self.echo('截图中 ...')
+		windowHeight = self.getElementBounds('body').height;
+		self.echo('截图中 ...');
 		setTimeout(function() {
 			self.capture(captureConfig.output, {
 				top: 0,
@@ -59,5 +57,5 @@ function goNext(num, step, cb, complete) {
 			console.log('页面滚动至最底部');
 			complete();
 		}
-	}, 500);
+	}, 800);
 }
