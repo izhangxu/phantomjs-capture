@@ -1,24 +1,22 @@
 {
-  "name": "phantomjs-capture-async",
+  "name": "phantomjs-capture",
   "version": "1.0.0",
-  "description": "截图，异步",
+  "description": "phantomjs-capture,截图",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/izhangxu/phantomjs-capture-async.git"
+    "url": "git+https://github.com/izhangxu/phantomjs-capture.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/izhangxu/phantomjs-capture-async/issues"
+    "url": "https://github.com/izhangxu/phantomjs-capture/issues"
   },
-  "homepage": "https://github.com/izhangxu/phantomjs-capture-async#readme",
+  "homepage": "https://github.com/izhangxu/phantomjs-capture#readme",
   "dependencies": {
-    "bagpipe": "^0.3.5",
-    "phantom": "^4.0.5",
-    "pify": "^3.0.0"
+    "phantom": "^4.0.5"
   }
 }
