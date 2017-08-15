@@ -1,6 +1,8 @@
 # phantomjs-capture
 
-使用phantomjs、casperjs、slimerjs模拟页面滚动，触发懒加载、异步请求、页面滚动后执行的函数，实现截图。记录一次坑爹的截图经过，casperjs下会对页面中的请求都会encodeurl后发送，但是项目中部分请求需要先对页面链接上的query参数的分割重组后当做异步请求的参数发送，此时分割query参数会出错，所以引入了slimerjs，使用firefox浏览器进行处理。
+使用phantomjs、casperjs、slimerjs模拟页面滚动，触发懒加载、异步请求、页面滚动后执行的函数，实现截图。
+
+记录一次坑爹的截图经过，casperjs下会对当前页面中的请求都会encodeurl后发送，但是项目中有个ajax需要先对当前页面链接上的query参数进行分割重组后，当做异步请求的参数发送，此时分割query参数会出错。所以引入了slimerjs，使用firefox浏览器进行处理。
 
 ** 目前只支持单张图片截取。**
 
@@ -11,7 +13,7 @@
 [slimerjs](https://slimerjs.org/) 在Gecko（Firefox）内核下使用。最新版本v0.10.3，默认兼容ff浏览器（minVersion >= 38.0.0、maxVersion <= 52.*）版本以内。今天（2017-08-15）我的mac ff版本是54.0.1，怎么破？官网介绍这么说--
 > However, you can change this limitation, by modifying the maxVersion parameter (and/or the minVersion) in the application.ini of SlimerJS. But remember you do it at your own risk.
 
-只能找到slimerjs包中找到application.ini（路径：/usr/local/lib/node_modules/slimerjs/src）下修改`maxVersion=54.*`。
+打开slimerjs包中的application.ini（mac路径：/usr/local/lib/node_modules/slimerjs/src）下修改`maxVersion=54.*`。
 
 ## 安装
 
