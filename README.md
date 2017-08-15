@@ -1,6 +1,8 @@
 # phantomjs-capture
 
-使用phantomjs、casperjs、slimerjs模拟页面滚动，触发懒加载、异步请求、页面滚动后执行的函数，实现截图。记录一次坑爹的截图经过
+使用phantomjs、casperjs、slimerjs模拟页面滚动，触发懒加载、异步请求、页面滚动后执行的函数，实现截图。记录一次坑爹的截图经过，casperjs下会对页面中的请求都会encodeurl后发送，但是项目中部分请求需要先对页面链接上的query参数的分割重组后当做异步请求的参数发送，此时分割query参数会出错，所以引入了slimerjs，使用firefox浏览器进行处理。
+
+** 目前只支持单张图片截取。**
 
 [phantomjs](http://phantomjs.org/) 无头浏览器，能做自动化测试，截图，查看网络请求，爬虫，论坛自动登录打卡...
 
