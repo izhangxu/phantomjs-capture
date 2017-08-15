@@ -1,26 +1,20 @@
 var casper = require('casper').create({
 	waitTimeout: 40000
 });
+
 var captureConfig = require('./config.json').capture;
 var count = 0;
 var windowHeight = 0;
 var step = 900;
 var timer = null;
-var sTimer = null;
-var querystring = require('querystring');
-var url = require('url');
-var arrSearch = url.parse(captureConfig.url).query.split('&');
-var nAdsLen = 0;
-var over = 0;
 
-arrSearch.forEach(function(item, i) {
-	if (item.indexOf('zt_ad_preview') >= 0) {
-		var adsParams = querystring.parse(item).zt_ad_preview.split(',');
-		nAdsLen = adsParams.length;
-	}
+casper.on('page.error', function(msg) {
+	this.echo('pageError: ' + msg);
 });
 
-console.log(nAdsLen)
+casper.on('resource', function(resource) {
+	this.echo(resource.url);
+});
 
 casper.start(captureConfig.url)
 	.viewport(captureConfig.viewportWidth, step)
@@ -32,26 +26,20 @@ casper.start(captureConfig.url)
 casper.then(function() {
 	var self = this;
 	goNext(count, step, self.scrollTo, function() {
+		self.echo('zt: ' + self.evaluate(function() {
+			return document.querySelectorAll('[data-ad-tag]').length;
+		}));
+		self.echo('截图中 ...')
 		setTimeout(function() {
-			over = 1;
+			self.capture(captureConfig.output, {
+				top: 0,
+				left: 0,
+				width: captureConfig.viewportWidth,
+				height: windowHeight
+			});
+			self.exit();
 		}, 2000);
 	});
-});
-
-casper.then(function() {
-	var self = this;
-	sTimer = setInterval(function() {
-		if (over) {
-			clearInterval(sTimer);
-			self.echo('zt: ' + self.evaluate(function() {
-				return document.querySelectorAll('[data-ad-tag]').length;
-			}));
-			setTimeout(function() {
-				self.capture(captureConfig.output);
-				self.exit();
-			}, 2000);
-		}
-	}, 500);
 });
 
 casper.waitFor(function() {
@@ -65,10 +53,10 @@ function goNext(num, step, cb, complete) {
 	timer = setInterval(function() {
 		n++;
 		cb.call(casper, 0, n * step);
-		console.log('scrolling: ' + n * step);
+		console.log('页面滚动至: ' + n * step + 'px');
 		if (n >= num) {
 			clearInterval(timer);
-			console.log('complete');
+			console.log('页面滚动至最底部');
 			complete();
 		}
 	}, 500);
