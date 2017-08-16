@@ -34,5 +34,14 @@ $ node manager.js -f // 用火狐浏览器截图
 ``` 
 之后在输出路径中查看图片。
 
+## 其他
+phantomjs使用`--disk-cache`命令后，可以开启缓存，加快处理速度，如需清除缓存请自行处理。各端默认缓存位置如下：
+
+Mac: ~/Library/Caches/Ofi Labs/PhantomJS
+
+Linux: ~/.qws/cache/Ofi Labs/PhantomJS
+
+Windows:AppData\Local\Ofi Labs\PhantomJS\cache
+
 ## License
 [MIT](https://github.com/izhangxu/phantomjs-capture/blob/master/LICENSE)

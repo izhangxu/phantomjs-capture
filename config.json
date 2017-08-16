@@ -4,8 +4,8 @@
 		"output": "./output/bj.jpg",
 		"viewportWidth": 1400
 	}, {
-		"url": "http://sh.leju.com",
-		"output": "./output/sh.jpg",
+		"url": "http://house.leju.com/bj/search",
+		"output": "./output/search.jpg",
 		"viewportWidth": 1400
 	}, {
 		"url": "http://sc.leju.com",
