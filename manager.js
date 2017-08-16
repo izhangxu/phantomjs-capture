@@ -2,11 +2,12 @@ var async = require('async');
 var captureConfig = require('./config.json').capture;
 var fs = require('fs');
 var cp = require('child_process');
+var isGecko = process.argv[2] == '-f' ? '--engine=slimerjs ' : '';
 
 var limit = 3;
 
 async.eachLimit(captureConfig, limit, function(item, callback) {
-	_capture(item.url, item.viewportWidth, item.output, function(output) {
+	_capture(encodeURI(item.url), item.viewportWidth, item.output, function(output) {
 		console.log(output);
 		callback(null);
 	});
@@ -19,7 +20,7 @@ async.eachLimit(captureConfig, limit, function(item, callback) {
 });
 
 function _capture(url, width, output, complete) {
-	var cmd = ['casperjs index.js', url, width, output].join(' ');
+	var cmd = ['casperjs' + isGecko + ' index.js', url, width, output].join(' ');
 	// console.log('child_process ' + cmd);
 	cp.exec(cmd, function(err, stdout, strerr) {
 		if (err) {

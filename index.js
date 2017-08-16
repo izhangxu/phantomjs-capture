@@ -46,7 +46,6 @@ casper.then(function() {
 				width: cViewportWidth,
 				height: windowHeight
 			}, {
-				format: 'jpg',
 				quality: 75
 			});
 			self.echo('截图完成: ' + cOutput);

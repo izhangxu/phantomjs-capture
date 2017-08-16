@@ -1,23 +1,19 @@
 {
 	"capture": [{
-		"url": "http://bj.esf.leju.com",
-		"output": "./output/bj",
-		"format": "jpg",
+		"url": "http://shanxi.esf.leju.com/community/o/?zt_ad_preview=ESFPC-011|119753,ESFPC-012|119752,ESFPC-013|119751",
+		"output": "./output/shanxi.jpg",
 		"viewportWidth": 1400
 	}, {
 		"url": "http://sh.leju.com",
-		"output": "./output/sh",
-		"format": "jpg",
+		"output": "./output/sh.jpg",
 		"viewportWidth": 1400
 	}, {
 		"url": "http://sc.leju.com",
-		"output": "./output/sc",
-		"format": "jpg",
+		"output": "./output/sc.jpg",
 		"viewportWidth": 1400
 	}, {
 		"url": "http://hrb.leju.com",
-		"output": "./output/hrb",
-		"format": "jpg",
+		"output": "./output/hrb.jpg",
 		"viewportWidth": 1400
 	}]
 }
