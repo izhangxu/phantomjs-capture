@@ -23,7 +23,7 @@ async.eachLimit(captureConfig, limit, function(item, callback) {
 });
 
 function _capture(url, width, output, complete) {
-	var cmd = ['casperjs --disk-cache=true' + isGecko + ' index.js', url, width, output].join(' ');
+	var cmd = ['casperjs --disk-cache=true ' + isGecko + ' index.js', url, width, output].join(' ');
 	// console.log('child_process ' + cmd);
 	cp.exec(cmd, function(err, stdout, strerr) {
 		if (err) {

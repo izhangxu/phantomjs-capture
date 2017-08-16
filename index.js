@@ -11,7 +11,7 @@ var cUrl = args.get(0),
 	windowHeight = 0,
 	step = 900,
 	timer = null;
-// console.log(cUrl, cViewportWidth, cOutput);
+console.log(cUrl, cViewportWidth, cOutput);
 
 casper.echo('url: ' + cUrl);
 
