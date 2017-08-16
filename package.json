@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/izhangxu/phantomjs-capture#readme",
   "dependencies": {
+    "async": "^2.5.0",
     "phantom": "^4.0.5"
   }
 }

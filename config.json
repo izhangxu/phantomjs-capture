@@ -1,7 +1,23 @@
 {
-	"capture": {
-		"url": "http://bj.esf.leju.com/info/368/?zt_ad_preview=ESFPC-017|119747,ESFPC-018|119746,ESFPC-019|119745,ESFPC-020|119744,ESFPC-021|119743,ESFPC-022|119742",
-		"output": "./output/bj.png",
+	"capture": [{
+		"url": "http://bj.esf.leju.com",
+		"output": "./output/bj",
+		"format": "jpg",
 		"viewportWidth": 1400
-	}
+	}, {
+		"url": "http://sh.leju.com",
+		"output": "./output/sh",
+		"format": "jpg",
+		"viewportWidth": 1400
+	}, {
+		"url": "http://sc.leju.com",
+		"output": "./output/sc",
+		"format": "jpg",
+		"viewportWidth": 1400
+	}, {
+		"url": "http://hrb.leju.com",
+		"output": "./output/hrb",
+		"format": "jpg",
+		"viewportWidth": 1400
+	}]
 }

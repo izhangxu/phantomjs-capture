@@ -2,22 +2,33 @@ var casper = require('casper').create({
 	waitTimeout: 20000
 });
 
-var captureConfig = require('./config.json').capture;
-var count = 0;
-var windowHeight = 0;
-var step = 900;
-var timer = null;
+var args = casper.cli;
+
+var cUrl = args.get(0),
+	cViewportWidth = Number(args.get(1)),
+	cOutput = args.get(2),
+	count = 0,
+	windowHeight = 0,
+	step = 900,
+	timer = null;
+// console.log(cUrl, cViewportWidth, cOutput);
+
+casper.echo('url: ' + cUrl);
 
 casper.on('page.error', function(msg) {
 	this.echo('pageError: ' + msg);
 });
 
-casper.on('resource', function(resource) {
-	this.echo(resource.url);
+// casper.on('resource.received', function(resource) {
+// 	this.echo(resource.url);
+// });
+
+casper.on('waitFor.timeout', function(resource) {
+	this.echo('waitFor.timeout');
 });
 
-casper.start(captureConfig.url)
-	.viewport(captureConfig.viewportWidth, step)
+casper.start(cUrl)
+	.viewport(cViewportWidth, step)
 	.then(function() {
 		windowHeight = this.getElementBounds('body').height;
 		count = Math.ceil(windowHeight / step);
@@ -29,12 +40,16 @@ casper.then(function() {
 		windowHeight = self.getElementBounds('body').height;
 		self.echo('截图中 ...');
 		setTimeout(function() {
-			self.capture(captureConfig.output, {
+			self.capture(cOutput, {
 				top: 0,
 				left: 0,
-				width: captureConfig.viewportWidth,
+				width: cViewportWidth,
 				height: windowHeight
+			}, {
+				format: 'jpg',
+				quality: 75
 			});
+			self.echo('截图完成: ' + cOutput);
 			self.exit();
 		}, 2000);
 	});
@@ -54,7 +69,6 @@ function goNext(num, step, cb, complete) {
 		console.log('页面滚动至: ' + n * step + 'px');
 		if (n >= num) {
 			clearInterval(timer);
-			console.log('页面滚动至最底部');
 			complete();
 		}
 	}, 800);
