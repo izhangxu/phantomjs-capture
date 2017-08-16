@@ -41,7 +41,7 @@ Mac: ~/Library/Caches/Ofi Labs/PhantomJS
 
 Linux: ~/.qws/cache/Ofi Labs/PhantomJS
 
-Windows:AppData\Local\Ofi Labs\PhantomJS\cache
+Windows: AppData\Local\Ofi Labs\PhantomJS\cache
 
 ## License
 [MIT](https://github.com/izhangxu/phantomjs-capture/blob/master/LICENSE)
