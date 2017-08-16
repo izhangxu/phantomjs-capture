@@ -6,6 +6,8 @@ var isGecko = process.argv[2] == '-f' ? '--engine=slimerjs ' : '';
 
 var limit = 3;
 
+console.time('time');
+
 async.eachLimit(captureConfig, limit, function(item, callback) {
 	_capture(encodeURI(item.url), item.viewportWidth, item.output, function(output) {
 		console.log(output);
@@ -17,10 +19,11 @@ async.eachLimit(captureConfig, limit, function(item, callback) {
 	} else {
 		console.log('所有截图完成');
 	}
+	console.timeEnd('time');
 });
 
 function _capture(url, width, output, complete) {
-	var cmd = ['casperjs' + isGecko + ' index.js', url, width, output].join(' ');
+	var cmd = ['casperjs --disk-cache=true' + isGecko + ' index.js', url, width, output].join(' ');
 	// console.log('child_process ' + cmd);
 	cp.exec(cmd, function(err, stdout, strerr) {
 		if (err) {

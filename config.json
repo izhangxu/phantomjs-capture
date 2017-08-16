@@ -1,7 +1,7 @@
 {
 	"capture": [{
-		"url": "http://shanxi.esf.leju.com/community/o/?zt_ad_preview=ESFPC-011|119753,ESFPC-012|119752,ESFPC-013|119751",
-		"output": "./output/shanxi.jpg",
+		"url": "http://shanxi.esf.leju.com",
+		"output": "./output/bj.jpg",
 		"viewportWidth": 1400
 	}, {
 		"url": "http://sh.leju.com",
