@@ -4,8 +4,6 @@
 
 记录一次坑爹的截图经过，casperjs下会对当前页面中的请求都会encodeurl后发送，但是项目中有个ajax需要先对当前页面链接上的query参数进行分割重组后，当做异步请求的参数发送，此时分割query参数会出错。所以引入了slimerjs，使用firefox浏览器进行处理。
 
-** 目前只支持单张图片截取。**
-
 [phantomjs](http://phantomjs.org/) 无头浏览器，能做自动化测试，截图，查看网络请求，爬虫，论坛自动登录打卡...
 
 [casperjs](http://casperjs.org/) 在Webkit（chrome）内核下使用。
@@ -14,6 +12,10 @@
 > However, you can change this limitation, by modifying the maxVersion parameter (and/or the minVersion) in the application.ini of SlimerJS. But remember you do it at your own risk.
 
 打开slimerjs包中的application.ini（mac路径：/usr/local/lib/node_modules/slimerjs/src）下修改`maxVersion=54.*`。
+
+## 说明
+ - 支持批量截图
+ - 模拟页面滚动，支持截取使用懒加载的页面
 
 ## 安装
 
@@ -25,10 +27,10 @@ $ npm install slimerjs -g
 
 ## 截图
 
-在根目录package.json中加入链接、截图宽度、输出路径。运行命令：
+在根目录`config.json`文件中`capture(type: array)`参数加入链接、截图宽度、输出路径。运行命令：
 ```
-$ casperjs index.js
-$ casperjs --engine=slimerjs index.js // 用火狐浏览器截图
+$ node manager.js
+$ node manager.js -f // 用火狐浏览器截图
 ``` 
 之后在输出路径中查看图片。
 
